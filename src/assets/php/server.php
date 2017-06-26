@@ -1,5 +1,6 @@
 <?php
 include "./class/project.php";
+header('Access-Control-Allow-Origin: *');  
 date_default_timezone_set('America/New_York');
 
 
@@ -60,8 +61,6 @@ if (!($project_info = $conn->prepare("
 
 $projects = array();
 if ($order_result = $conn->query("SELECT * FROM ordering")) {
-    printf("Select returned %d rows.", $order_result->num_rows);
-    echo "<br />\n";
     while ($order_row = $order_result->fetch_assoc()) {
     	$project_id = $order_row['project_id'];
     	if (!$project_info->bind_param("i", $project_id)) {
@@ -72,20 +71,21 @@ if ($order_result = $conn->query("SELECT * FROM ordering")) {
 		}
 		$project_result = $project_info->get_result();
 		$project_row = $project_result->fetch_assoc();
+		$image_id = $project_row['img_id'];
 		$project = new Project();
 		$project->name = $project_row['name'];
 		$project->description = $project_row['description'];
 		$project->link = $project_row['link'];
 		$project->repo_link = $project_row['repo_link'];
 		$project->blog_link = $project_row['blog_link'];
-		if (!$image_info->bind_param("i", $project_id)) {
+		if (!$image_info->bind_param("i", $image_id)) {
     		echo "Binding parameters failed: (" . $image_info->errno . ") " . $image_info->error;
 		}
 		if (!$image_info->execute()) {
     		echo "Execute failed: (" . $image_info->errno . ") " . $image_info->error;
 		}
 		$image_result = $image_info->get_result();
-		$image_row = $project_result->fetch_assoc();
+		$image_row = $image_result->fetch_assoc();
 		$project->image_path = $image_row['img_path'];
 		$project->image_description = $image_row['img_description'];
 		if (!$contributers_list_prepstmt->bind_param("i", $project_id)) {
@@ -108,8 +108,13 @@ if ($order_result = $conn->query("SELECT * FROM ordering")) {
 		while ( $ideas_row = $ideas_result->fetch_assoc()){
 			$project->idea_creators[] = $ideas_row['full_name'];
 		}
-		$project->start_date = date ("Y-m-d", $ideas_row['start_date']);
-		$project->end_date = date ("Y-m-d", $ideas_row['end_date']);
+
+		$startDate = new DateTime($project_row['start_date']);
+		$endDate = new DateTime($project_row['end_date']);
+		$startDateConversion = $startDate->format("m/d/Y");
+		$endDateConversion = $endDate->format("m/d/Y");
+		$project->start_date = $startDateConversion;
+		$project->end_date = $endDateConversion;
 
 		$projects[] = $project;
 
