@@ -1,3 +1,98 @@
-<p>
-  project-page works!
-</p>
+<div id="project-page">
+	<div class="container project-background">
+		<div class="center">
+			<h2>
+				Projects
+			</h2>
+		</div>
+		<div class="row">
+		
+
+			<div *ngFor="let project of projects" class="col-sm-3 center glow" data-toggle="modal" data-target="#myModal"   (click)="onSelect(project)">
+				<div>
+					<h6>{{project.name}}</h6>
+				</div>
+				<div class="center">
+					<img [src]="project.image_path" class="projectPictures">
+				</div>
+				<div>
+					<p>
+						{{project.image_description}}	
+					</p>
+				</div>
+		
+		</div>
+			
+	</div>
+</div>
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog"  *ngIf="selectedProject != NULL" >
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content ">
+      <div class="modal-header ">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">{{selectedProject.name}}</h4>
+      </div>
+      <div class="modal-body">
+        	<div class="center">
+				<img [src]="selectedProject.image_path" class="modalImage">
+			</div>
+			<div>
+				<p>
+				{{selectedProject.description}}
+				</p>
+			</div>
+			<div>
+				<p>
+				Start Date: {{selectedProject.start_date}}
+				</p>
+				<p>
+					End Date: {{selectedProject.end_date}}
+				</p>
+			</div>
+			<div>
+				Collaborator(s):
+				<br/>
+					<ol >
+						<li *ngFor="let collaborator of selectedProject.collaborators" >
+							{{collaborator}}
+						</li>
+						
+					</ol>
+			</div>
+			<div>
+				Idea Creator(s):
+					<ol>
+						<li *ngFor="let idea_creator of selectedProject.idea_creators" >
+							{{idea_creator}}
+							
+						</li>
+				
+					</ol>
+			</div>
+			<div>
+				<p *ngIf="selectedProject.link != NULL">
+					Project Main Website: <a [href]="selectedProject.link">{{selectedProject.link}}</a>
+				</p>
+				<p *ngIf="selectedProject.repo_link != NULL">
+					Project Repository Website: <a [href]="selectedProject.repo_link">{{selectedProject.repo_link}}</a>
+				</p>
+				<p *ngIf="selectedProject.blog_link != NULL">
+					Project Blog Website: <a [href] ="selectedProject.blog_link">{{selectedProject.blog_link}}</a>
+				</p>
+			</div>
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>

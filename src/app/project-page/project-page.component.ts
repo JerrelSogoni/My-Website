@@ -1,15 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Project} from './project';
+import { ProjectsService } from './projects.service';
+
 @Component({
   selector: 'app-project-page',
   templateUrl: './project-page.component.html',
+  providers: [ ProjectsService ],
   styleUrls: ['./project-page.component.css']
 })
 export class ProjectPageComponent implements OnInit {
+  errorMessage: string;
+  projects: Project[];
+  selectedProject: Project;
+  mode = 'Observable';
 
-  constructor() { }
+  constructor(private projectsService: ProjectsService) { }
 
   ngOnInit() {
+ 		this.getProjects();
+
+  }
+
+  getProjects() {
+
+  	this.projectsService.getProjects()
+                     .subscribe(
+                       projects => this.projects = projects,
+                       error =>  this.errorMessage = <any>error);
+
+  }
+  onSelect(project: Project) {
+  	this.selectedProject = project;
+  	console.log(this.selectedProject);
   }
 
 }

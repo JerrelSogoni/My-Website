@@ -1,0 +1,30 @@
+div {
+	color: white;
+}
+#serious{
+	border-radius: 20px;
+}
+
+
+#front-page-left {
+   
+   background: #45484d; /* Old browsers */
+background: -moz-linear-gradient(top, #45484d 0%, #000000 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #45484d 0%,#000000 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #45484d 0%,#000000 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+	border-radius: 5px;
+}
+
+#front-page-right{
+background: #0d376d; /* Old browsers */
+background: -moz-linear-gradient(top, #0d376d 0%, #0d305f 41%, #0b284d 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #0d376d 0%,#0d305f 41%,#0b284d 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #0d376d 0%,#0d305f 41%,#0b284d 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0d376d', endColorstr='#0b284d',GradientType=0 ); /* IE6-9 */
+	border-radius: 5px;
+}
+
+
+
+

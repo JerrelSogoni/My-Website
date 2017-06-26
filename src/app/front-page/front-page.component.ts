@@ -6,8 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./front-page.component.css']
 })
 export class FrontPageComponent implements OnInit {
+  fullpath: String;
+  casual: String;
+  professional: String;
+  constructor() { 
+  	this.fullpath = "/assets/front-page/";
+  	this.casual = this.fullpath + "casual.png";
+  	this.professional = this.fullpath + "professional.png";
+  }
 
-  constructor() { }
 
   ngOnInit() {
   }

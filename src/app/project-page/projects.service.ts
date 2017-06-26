@@ -7,7 +7,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
 
-import { Projects } from './projects';
+import { Project } from './project';
 
 @Injectable()
 export class ProjectsService {
@@ -15,7 +15,7 @@ export class ProjectsService {
 	private projectUrl = 'server.php';
 	
   	constructor(private http: Http) { }
-  	getProjects() : Observable<Projects[]> {
+  	getProjects() : Observable<Project[]> {
     return this.http.get("http://localhost:8000")
                     .map(this.extractData)
                     .catch(this.handleError);
@@ -23,9 +23,29 @@ export class ProjectsService {
 
 
 private extractData(res: Response) {
-    let body = res.json();
-    console.log(body);
-    return body.data || { };
+    let projects = res.json();
+    var project_parsed: Project[] = [];
+    var arrayLength = projects.length;
+    for (var projectNum = 0; projectNum < arrayLength; projectNum++){
+    	let project = new Project();
+    	var projectInfo = projects[projectNum];
+    	project.name = projectInfo.name;
+    	project.description = projectInfo.description;
+    	project.link = projectInfo.link;
+    	project.repo_link = projectInfo.repo_link;
+    	project.blog_link = projectInfo.blog_link;
+    	project.collaborators = projectInfo.collaborators;
+    	project.idea_creators = projectInfo.idea_creators;
+    	project.image_description = projectInfo.image_description;
+    	project.image_path = projectInfo.image_path;
+    	project.start_date = projectInfo.start_date;
+    	project.end_date = projectInfo.end_date;
+    	project_parsed.push(project);
+    }
+    console.log("LOL");
+    console.log(project_parsed);
+
+    return  project_parsed || { };
   }
  private handleError (error: Response | any) {
     // In a real world app, you might use a remote logging infrastructure
@@ -40,5 +60,7 @@ private extractData(res: Response) {
     console.error(errMsg);
     return Observable.throw(errMsg);
   }
+
+
 
 }
