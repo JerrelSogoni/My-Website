@@ -39,6 +39,7 @@
                     </div>
                     <div>
                     	<re-captcha
+                    	#captchaRef
          
      (resolved)="resolved($event)"
     required
@@ -48,7 +49,7 @@
 
 
             
-        <button type="submit" [disabled]="!captcha" (click)="captchaRef.reset()" class="btn btn-defualt pull-right">Send</button>
+        <button type="submit" [disabled]="!captcha || contactForm.status == 'INVALID'" (click)="captchaRef.reset()" class="btn btn-defualt pull-right">Send</button>
         </form>
     </div>
 </div>

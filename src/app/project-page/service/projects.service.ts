@@ -7,12 +7,12 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
 
-import { Project } from './project';
+import { Project } from '../class/project';
 
 @Injectable()
 export class ProjectsService {
 	
-	private projectUrl = 'server.php';
+	private projectUrl = 'assets/php/server.php';
 	
   	constructor(private http: Http) { }
   	getProjects() : Observable<Project[]> {
@@ -23,7 +23,9 @@ export class ProjectsService {
 
 
 private extractData(res: Response) {
+	console.log(res);
     let projects = res.json();
+
     var project_parsed: Project[] = [];
     var arrayLength = projects.length;
     for (var projectNum = 0; projectNum < arrayLength; projectNum++){
