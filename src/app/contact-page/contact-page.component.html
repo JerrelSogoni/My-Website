@@ -45,12 +45,27 @@
     required
     siteKey="6LcOuyYTAAAAAHTjFuqhA52fmfJ_j5iFk5PsfXaU"
   ></re-captcha>
-   </div>
+    <div>
+  	<button type="button" class="btn btn-outline-secondary" (click)="captchaRef.reset()">RESET Captcha</button>
+  </div>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="success == 'NO'">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <strong>Oh snap!</strong> Mailing service not working.
 
-
-            
-        <button type="submit" [disabled]="!captcha || contactForm.status == 'INVALID'" (click)="captchaRef.reset()" class="btn btn-defualt pull-right">Send</button>
-        </form>
-    </div>
 </div>
+        <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="success == 'YES'">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <strong>Success!</strong> Message Sent.
+</div>
+   </div> 
+   		<div>
+        <button type="submit" [disabled]="!captcha || contactForm.status == 'INVALID'" (click)="captchaRef.reset()" class="btn btn-defualt pull-right">Send</button>
+        </div>
+     </form>
+    </div>
+	</div>
  </div>

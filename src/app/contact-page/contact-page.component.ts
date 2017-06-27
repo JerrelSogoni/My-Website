@@ -16,9 +16,11 @@ import { MessageService } from './service/message-system.service';
 export class ContactPageComponent implements OnInit {
  contactForm: FormGroup;
  captcha: boolean = false;
+ message: Message;
+ success: String;
  http : Http;
 
-  constructor() {
+  constructor(private messageService: MessageService) {
 
   
   }
@@ -37,7 +39,7 @@ export class ContactPageComponent implements OnInit {
 
 
   }
-   onSubmit() {
+   public onSubmit() {
    if (this.captcha){
    	let message = new Message();
    	message.name = this.contactForm.get('name').value;
@@ -45,9 +47,8 @@ export class ContactPageComponent implements OnInit {
    	message.phone = this.contactForm.get('phone').value;
    	message.subject = this.contactForm.get('subject').value;
    	message.message = this.contactForm.get('message').value;
-   	console.log(message.message);
-
-   	this.contactForm.reset();
+   	this.sendMessage(message);
+   	
    }
 
    this.captcha = false;
@@ -55,6 +56,14 @@ export class ContactPageComponent implements OnInit {
   }
   public resolved(captchaResponse: string) {
     this.captcha = true;
+  }
+  public sendMessage(message: Message) {
+    this.messageService.sendMessage(message).subscribe(res => {
+      this.success = "YES";
+      this.contactForm.reset();
+    }, error => {
+      this.success = "NO";
+    })
   }
 
 }

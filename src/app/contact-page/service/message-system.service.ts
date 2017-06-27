@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Http, Response , URLSearchParams}          from '@angular/http';
+import { Http}          from '@angular/http';
  
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
@@ -12,9 +12,22 @@ import { Message } from '../class/message';
 @Injectable()
 export class MessageService {
 	
-	private projectUrl = 'assets/php/server.php';
+	 private projectUrl = 'http://localhost:8000';
 	
   	constructor(private http: Http) { }
+    
+    sendMessage( message: Message) : Observable<Message> | any {
+        return this.http.post("http://localhost:9000", message)
+                .map(response => {
+                  console.log(message);
+                  console.log(response);
+                  return response;
+                 })
+                .catch(error => {
+                    return Observable.throw(error)
+                })
+
+    }
 
 
 }
