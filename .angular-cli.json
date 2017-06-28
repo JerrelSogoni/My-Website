@@ -24,7 +24,8 @@
       ],
       "scripts": [ "./assets/js/contact_form_validator.js",
                    "./assets/js/pdfobject.js",
-                    "./assets/js/tab-scroll.js"],
+                    "./assets/js/tab-scroll.js",
+                    "./assets/js/jquery-3.2.1.js"],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

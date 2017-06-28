@@ -8,9 +8,8 @@ $servername = "127.0.0.1";
 $username = "jerrkfcd_jerrel";
 $password = "root123";
 $dbname = "jerrkfcd_website";
-$port = 5000;
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname, 5000);
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {

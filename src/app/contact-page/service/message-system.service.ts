@@ -12,12 +12,12 @@ import { Message } from '../class/message';
 @Injectable()
 export class MessageService {
 	
-	 private projectUrl = 'http://localhost:8000';
+	 private projectUrl = "assets/php/contact_me.php";
 	
   	constructor(private http: Http) { }
     
     sendMessage( message: Message) : Observable<Message> | any {
-        return this.http.post("http://localhost:9000", message)
+        return this.http.post(this.projectUrl, message)
                 .map(response => {
                   console.log(message);
                   console.log(response);

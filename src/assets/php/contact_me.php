@@ -15,9 +15,9 @@ $to_email = "noreply@jerrelsogoni.com";
 $contact = "<p><strong>Name:</strong> $name</p>
 <p><strong>Email:</strong> $email</p>
 <p><strong>Phone:</strong> $phone</p>";
-$content = "<p>$message</p>";
+$content = "<p><strong>Message:</strong><br/>$message</p>";
 
-$email_subject = "$subject";
+$email_subject = "Website Contact Form: $subject";
 
 $email_body = '<html><body>';
 $email_body .= "$contact $content";
@@ -25,7 +25,7 @@ $email_body .= '</body></html>';
 $headers = "MIME-Version: 1.0" . "\r\n";
 $headers .= "Content-type:text/html;charset=UTF-8\r\n";
 
-$headers = "From: $to_email \r\n";
+$headers .= "From: $to_email \r\n";
 $headers .= "Reply-To: $email \r\n";
 
 if (mail($to_email,$email_subject,$email_body,$headers)){

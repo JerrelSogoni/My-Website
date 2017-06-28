@@ -16,7 +16,7 @@ export class ProjectsService {
 	
   	constructor(private http: Http) { }
   	getProjects() : Observable<Project[]> {
-    return this.http.get("http://localhost:8000")
+    return this.http.get(this.projectUrl)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
