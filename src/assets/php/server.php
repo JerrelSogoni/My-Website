@@ -27,8 +27,7 @@ if (!($contributers_list_prepstmt = $conn->prepare("
 			C.name_id	
 			FROM contributers C
 			WHERE C.project_id = (?)
-			)")))
-  	{
+			)"))){
      echo "Prepare failed: (" . $conn->errno . ") " . $conn->error;
 	}
 if (!($idea_creator_list_prepstmt = $conn->prepare("
@@ -38,8 +37,7 @@ if (!($idea_creator_list_prepstmt = $conn->prepare("
 			I.name_id	
 			FROM idea_creator I
 			WHERE I.project_id = (?)
-			)")))
-  	{
+			)"))){
      echo "Prepare failed: (" . $conn->errno . ") " . $conn->error;
 	}
 if (!($image_info = $conn->prepare("
@@ -47,15 +45,13 @@ if (!($image_info = $conn->prepare("
 		img_path,
 		img_description
   		FROM images I
-  			WHERE I.id = (?)")))
-  	{
+  			WHERE I.id = (?)"))){
      echo "Prepare failed: (" . $conn->errno . ") " . $conn->error;
 	}
 if (!($project_info = $conn->prepare("
 	SELECT *
   		FROM project P
-  			WHERE P.id = (?)")))
-  	{
+  			WHERE P.id = (?)"))){
      echo "Prepare failed: (" . $conn->errno . ") " . $conn->error;
 	}
 
@@ -127,6 +123,7 @@ if ($order_result = $conn->query("SELECT * FROM ordering")) {
     echo json_encode($projects);
 
     $order_result->close();
+    $conn = null;
 }
 
 ?>

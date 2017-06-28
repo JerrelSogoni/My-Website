@@ -1,0 +1,16 @@
+ul#footer-icon li{
+	display: inline;
+	padding: 20px;
+}
+
+footer {
+	background: #16222a; /* Old browsers */
+background: -moz-linear-gradient(left, #16222a 0%, #3a6073 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, #16222a 0%,#3a6073 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, #16222a 0%,#3a6073 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#16222a', endColorstr='#3a6073',GradientType=1 ); /* IE6-9 */
+	color: black;
+}
+hr {
+	border: 1px solid #CCC;
+}

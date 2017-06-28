@@ -12,6 +12,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awes
 import { RecaptchaModule } from 'ng-recaptcha';
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -24,6 +25,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProjectPageComponent,
     FrontPageComponent,
     ContactPageComponent,
+    FooterComponent,
 
   ],
   imports: [
