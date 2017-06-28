@@ -22,7 +22,9 @@
         "styles.css",
         "../node_modules/font-awesome/css/font-awesome.css"
       ],
-      "scripts": [ "./assets/js/contact_form_validator.js"],
+      "scripts": [ "./assets/js/contact_form_validator.js",
+                   "./assets/js/pdfobject.js",
+                    "./assets/js/tab-scroll.js"],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
