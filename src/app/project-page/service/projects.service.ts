@@ -44,8 +44,6 @@ private extractData(res: Response) {
     	project.end_date = projectInfo.end_date;
     	project_parsed.push(project);
     }
-    console.log("LOL");
-    console.log(project_parsed);
 
     return  project_parsed || { };
   }

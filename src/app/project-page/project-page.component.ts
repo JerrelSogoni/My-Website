@@ -32,7 +32,6 @@ export class ProjectPageComponent implements OnInit {
   }
   onSelect(project: Project) {
   	this.selectedProject = project;
-  	console.log(this.selectedProject);
   }
 
 }
