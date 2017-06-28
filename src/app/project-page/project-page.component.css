@@ -13,6 +13,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d1913c', end
 
 }
 #project-page{
+	padding-top: 50px;
 	border-width: 1px;
 	border-color: grey;
 	border-style: solid;
